@@ -1,0 +1,10 @@
+PROTOTIPO KARDEX DIGITAL - SEDEGES
+
+1) Descomprima esta carpeta.
+2) Abra el archivo index.html con Chrome, Edge o Firefox.
+3) Use el menú izquierdo para recorrer el proceso de inicio a fin.
+4) Los datos son ficticios y quedan guardados solo en el navegador.
+5) El prototipo NO sube escaneos, fotografías, PDFs ni documentos pesados.
+
+Para revisar con Kardex, sugerencia de recorrido:
+Inicio -> Pre-registro y requisitos -> Ficha Personal -> Hoja de Vida -> Formularios de ingreso -> Caja de Salud -> Vacaciones -> Certificados -> Accidentes -> Historial -> Mapa de datos.
