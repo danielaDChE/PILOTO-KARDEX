@@ -1,0 +1,79 @@
+<div class="app-shell">
+  <aside class="sidebar" [class.sidebar-open]="mobileMenuOpen()">
+    <a class="sidebar-brand" routerLink="/dashboard" aria-label="SEDEGES inicio">
+      <span class="sidebar-brand-mark">LP</span>
+      <span><strong>SEDEGES</strong><small>GESTIÓN DE PERSONAL</small></span>
+    </a>
+    <div class="sidebar-caption">MENÚ PRINCIPAL</div>
+    <nav class="side-nav" aria-label="Menú principal">
+      @for (item of menu; track item.label) {
+        <div class="nav-group">
+          <button class="nav-item" [class.nav-active]="activeMenu() === item.label"
+                  (click)="toggle(item)" [attr.aria-expanded]="item.children ? expanded() === item.label : null">
+            <span class="nav-icon">{{ item.icon }}</span><span class="nav-label">{{ item.label }}</span>
+            @if (item.children) { <span class="nav-chevron">{{ expanded() === item.label ? '⌄' : '›' }}</span> }
+          </button>
+          @if (item.children && expanded() === item.label) {
+            <div class="sub-nav">
+              @for (child of item.children; track child) {
+                <button [class.sub-active]="activeMenu() === child" (click)="select(child)">
+                  <span class="sub-dot"></span>{{ child }}
+                </button>
+              }
+            </div>
+          }
+        </div>
+      }
+    </nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span> Sistema institucional <span class="version">v1.0</span></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <button class="mobile-menu-button" (click)="toggleMobileMenu()" aria-label="Abrir menú">☰</button>
+      <div class="breadcrumbs"><span>SEDEGES</span><span class="crumb-separator">/</span><strong>{{ activeMenu() }}</strong></div>
+      <div class="topbar-actions">
+       
+        <div class="user-avatar">AD</div>
+        <div class="user-meta"><strong>Administrador</strong><span>Usuario de prueba</span></div>
+        <button class="logout-button" (click)="auth.logout()">Salir ↗</button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      <div class="page-heading">
+        <div><span class="eyebrow">SISTEMA INTEGRADO DE ADMINISTRACIÓN DE PERSONAL</span><h1>Panel de control</h1>
+          <p>Bienvenido al sistema de gestión institucional de SEDEGES.</p></div>
+        <span class="date-pill">GESTIÓN 2026</span>
+      </div>
+
+      
+
+      <section class="metric-grid" aria-label="Indicadores principales">
+        <article class="metric-card"><div class="metric-top"><span>Servidores registrados</span><span class="metric-icon gold-icon">♙</span></div><strong>—</strong><small>Requiere conexión con la base de datos</small></article>
+        <article class="metric-card"><div class="metric-top"><span>En servicio</span><span class="metric-icon navy-icon">✓</span></div><strong>—</strong><small>Estado laboral actualizado por RR. HH.</small></article>
+        <article class="metric-card"><div class="metric-top"><span>Solicitudes pendientes</span><span class="metric-icon gray-icon">◷</span></div><strong>—</strong><small>Permisos, boletas y trámites</small></article>
+        <article class="metric-card"><div class="metric-top"><span>Movimientos recientes</span><span class="metric-icon cream-icon">↗</span></div><strong>—</strong><small>Memorándums y movimientos laborales</small></article>
+      </section>
+
+      <section class="dashboard-lower">
+        <article class="panel-card">
+          <div class="panel-heading"><div><h2>Accesos rápidos</h2><p>Ingresa directamente a los módulos de uso frecuente.</p></div><span class="panel-mark"></span></div>
+          <div class="quick-grid">
+            <button (click)="select('Nómina de Personal')"><span class="quick-icon">♙</span><span><strong>Nómina de Personal</strong><small>Consultar servidores</small></span><span class="quick-arrow">→</span></button>
+            <button (click)="select('Expediente del Servidor')"><span class="quick-icon">▤</span><span><strong>Expediente del Servidor</strong><small>Documentación y datos</small></span><span class="quick-arrow">→</span></button>
+            <button (click)="select('Marcaciones')"><span class="quick-icon">◷</span><span><strong>Control de Personal</strong><small>Marcaciones y permisos</small></span><span class="quick-arrow">→</span></button>
+            <button (click)="select('Planilla salarial')"><span class="quick-icon">▧</span><span><strong>Planillas y Remuneraciones</strong><small>Gestión salarial</small></span><span class="quick-arrow">→</span></button>
+          </div>
+        </article>
+        <article class="panel-card institution-card">
+          <div class="institution-emblem">LP</div><span class="eyebrow">GOBIERNO AUTÓNOMO DEPARTAMENTAL</span>
+          <h2>La Paz, departamento maravilloso</h2>
+          <p>Una plataforma unificada para la administración, el seguimiento y la trazabilidad de la gestión del personal.</p>
+          <div class="institution-line"></div><span class="institution-foot">GADLP · SEDEGES</span>
+        </article>
+      </section>
+      <footer class="app-footer"><span>© 2026 SEDEGES · Sistema Integrado de Administración de Personal</span></footer>
+    </main>
+  </div>
+</div>
